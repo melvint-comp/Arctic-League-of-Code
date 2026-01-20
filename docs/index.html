@@ -45,22 +45,22 @@
     z-index: 1000;
   }
   
-  /* Inputs (Country & Year) and Dropdown */
+  /* Inputs (entity + year + model) */
   .controls input,
   .controls select {
     min-width: 130px;
     height: 30px;
     padding: 4px 18px 4px 12px;
-    border-radius: 6px;             /* slight rounding */
+    border-radius: 6px;
     border: none;
-    background: rgba(0, 0, 0, 0.2);  /* dark-translucent background */
-    color: #f0e6c8;                 /* khaki-white text */
+    background: rgba(0, 0, 0, 0.2); /* dark translucent */
+    color: #f0e6c8;                /* khaki-white */
     font-size: 13px;
     outline: none;
     transition: all 0.2s ease;
   }
   
-  /* Shorter year input */
+  /* Year input narrower */
   #year {
     min-width: 90px;
   }
@@ -77,15 +77,13 @@
     padding-right: 28px;
   }
   
-  /* Model dropdown to match input style */
+  /* Model selection dropdown same style as inputs */
   #model {
     background: rgba(0, 0, 0, 0.2);
     color: #f0e6c8;
-    border-radius: 6px;
-    border: none;
   }
   
-  /* Button (Run Analysis) styling – slightly transparent */
+  /* Button */
   .controls button {
     min-width: 130px;
     height: 30px;
@@ -93,14 +91,12 @@
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    background: rgba(245, 245, 245, 0.85);  /* slightly transparent */
+    background: rgba(245, 245, 245, 0.35); /* more transparent 35% */
     font-size: 13px;
-    color: #000;                            /* keep readable */
-    transition: all 0.2s ease;
   }
   
   .controls button:hover {
-    background: rgba(225, 225, 225, 0.95);
+    background: rgba(245, 245, 245, 0.4); /* slightly more opaque on hover */
   }
   
   /* Suggestions box */
