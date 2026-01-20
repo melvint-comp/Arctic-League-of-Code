@@ -16,104 +16,114 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
-      * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Oswald", sans-serif;
-    }
-    
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    /* Fullscreen map */
-    #map {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-    }
-    
-    /* Controls container */
-    .controls {
-      position: fixed;
-      bottom: 20px;
-      left: 16px;
-      display: flex;
-      gap: 8px;
-      z-index: 1000;
-    }
-    
-    /* Inputs (NOT button) */
-    .controls input,
-    .controls select {
-      min-width: 130px;
-      height: 30px;
-      padding: 4px 18px 4px 12px;
-      border-radius: 6px;
-      border: none;
-      background: rgba(0, 0, 0, 0.2); /* dark translucent */
-      color: #f0e6c8;                /* khaki-white */
-      font-size: 13px;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    
-    /* Shorter year input */
-    #year {
-      min-width: 90px;
-    }
-    
-    /* Extend width only on focus */
-    .controls input:focus,
-    .controls select:focus {
-      min-width: 200px;
-      background: rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Dropdown arrow spacing */
-    .controls select {
-      padding-right: 28px;
-    }
-    
-    /* Button (unchanged style) */
-    .controls button {
-      min-width: 130px;
-      height: 30px;
-      padding: 4px 14px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      background: rgba(245, 245, 245, 0.9);
-      font-size: 13px;
-    }
-    
-    .controls button:hover {
-      background: rgba(225, 225, 225, 1);
-    }
-    
-    /* Suggestions box */
-    #suggestions {
-      position: absolute;
-      bottom: 38px;
-      left: 0;
-      background: rgba(0, 0, 0, 0.85);
-      border-radius: 6px;
-      overflow: hidden;
-      display: none;
-    }
-    
-    .suggestion {
-      padding: 6px 12px;
-      color: #f0e6c8;
-      cursor: pointer;
-    }
-    
-    .suggestion:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-</style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", sans-serif;
+  }
+  
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Fullscreen map */
+  #map {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+  }
+  
+  /* Controls container */
+  .controls {
+    position: fixed;
+    bottom: 20px;
+    left: 16px;
+    display: flex;
+    gap: 8px;
+    z-index: 1000;
+  }
+  
+  /* Inputs (Country & Year) and Dropdown */
+  .controls input,
+  .controls select {
+    min-width: 130px;
+    height: 30px;
+    padding: 4px 18px 4px 12px;
+    border-radius: 6px;             /* slight rounding */
+    border: none;
+    background: rgba(0, 0, 0, 0.2);  /* dark-translucent background */
+    color: #f0e6c8;                 /* khaki-white text */
+    font-size: 13px;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  
+  /* Shorter year input */
+  #year {
+    min-width: 90px;
+  }
+  
+  /* Extend width only on focus */
+  .controls input:focus,
+  .controls select:focus {
+    min-width: 200px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Dropdown arrow spacing */
+  .controls select {
+    padding-right: 28px;
+  }
+  
+  /* Model dropdown to match input style */
+  #model {
+    background: rgba(0, 0, 0, 0.2);
+    color: #f0e6c8;
+    border-radius: 6px;
+    border: none;
+  }
+  
+  /* Button (Run Analysis) styling – slightly transparent */
+  .controls button {
+    min-width: 130px;
+    height: 30px;
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: rgba(245, 245, 245, 0.85);  /* slightly transparent */
+    font-size: 13px;
+    color: #000;                            /* keep readable */
+    transition: all 0.2s ease;
+  }
+  
+  .controls button:hover {
+    background: rgba(225, 225, 225, 0.95);
+  }
+  
+  /* Suggestions box */
+  #suggestions {
+    position: absolute;
+    bottom: 38px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 6px;
+    overflow: hidden;
+    display: none;
+  }
+  
+  .suggestion {
+    padding: 6px 12px;
+    color: #f0e6c8;
+    cursor: pointer;
+  }
+  
+  .suggestion:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  </style>
 </head>
 
 <body>
