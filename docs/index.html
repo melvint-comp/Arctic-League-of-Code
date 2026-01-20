@@ -12,16 +12,11 @@
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Leaflet -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- <link rel="stylesheet" href="style.css" /> -->
   <style>
-    /* Global Reset */
-    * {
+      * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -33,83 +28,86 @@
       overflow: hidden;
     }
     
-    /* Fullscreen Map */
+    /* Fullscreen map */
     #map {
       position: fixed;
       inset: 0;
       z-index: 1;
     }
     
-    /* Control Panel */
+    /* Controls container */
     .controls {
       position: fixed;
       bottom: 20px;
       left: 16px;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       z-index: 1000;
     }
     
-    /* Inputs & Buttons */
+    /* Inputs & buttons */
     .controls input,
     .controls select,
     .controls button {
       min-width: 130px;
-      padding: 8px 14px;
-      border-radius: 22px;
+      height: 32px;                 /* flatter */
+      padding: 4px 16px 4px 12px;   /* extra right padding */
+      border-radius: 6px;           /* slight rounding only */
       border: 2px solid #444;
-      background: rgba(255, 255, 255, 0.95);
-      font-size: 14px;
+      background: rgba(255, 255, 255, 0.8); /* 20% transparent */
+      font-size: 13px;
       outline: none;
       transition: all 0.2s ease;
     }
     
-    /* Dynamic width growth (extend only) */
+    /* Dropdown arrow spacing */
+    .controls select {
+      padding-right: 26px;
+    }
+    
+    /* Extend width only on focus */
     .controls input:focus,
     .controls select:focus {
       min-width: 200px;
     }
     
-    /* Button Styling */
+    /* Button */
     .controls button {
       cursor: pointer;
-      background: #f5f5f5;
+      background: rgba(245, 245, 245, 0.8);
     }
     
     .controls button:hover {
-      background: #e0e0e0;
+      background: rgba(225, 225, 225, 0.9);
     }
     
-    /* Suggestions Dropdown */
+    /* Suggestions box */
     #suggestions {
       position: absolute;
-      bottom: 48px;
+      bottom: 40px;
       left: 0;
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid #444;
-      border-radius: 14px;
+      border-radius: 6px;
       overflow: hidden;
       display: none;
     }
     
     .suggestion {
-      padding: 6px 14px;
+      padding: 6px 12px;
       cursor: pointer;
     }
     
     .suggestion:hover {
-      background: #eeeeee;
+      background: #eaeaea;
     }
-  </style>
-  
+</style>
 </head>
 
 <body>
 
-  <!-- Fullscreen Map -->
   <div id="map"></div>
 
-  <!-- Control Panel -->
   <div class="controls">
     <input
       id="entity"
@@ -125,12 +123,15 @@
       <option value="rf">Random Forest</option>
     </select>
 
-    <select id="year">
-      <option value="2025">2025</option>
-      <option value="2030">2030</option>
-      <option value="2035">2035</option>
-      <option value="2040">2040</option>
-    </select>
+    <!-- Year is now a number input -->
+    <input
+      id="year"
+      type="number"
+      min="2000"
+      max="2040"
+      value="2035"
+      placeholder="Year"
+    />
 
     <button onclick="runPrediction()">Run Analysis</button>
   </div>
