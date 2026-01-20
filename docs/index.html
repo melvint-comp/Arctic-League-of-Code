@@ -3,138 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sustaining POWER</title>
-
-  <!-- Oswald Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-
-  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Oswald", sans-serif;
-  }
-  
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  /* Fullscreen map */
-  #map {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-  }
-  
-  /* Controls container */
-  .controls {
-    position: fixed;
-    bottom: 20px;
-    left: 16px;
-    display: flex;
-    gap: 8px;
-    z-index: 1000;
-  }
-  
-  /* Inputs (excluding button) */
-  .controls input,
-  .controls select {
-    min-width: 130px;
-    height: 30px;
-    padding: 4px 18px 4px 12px;
-    border-radius: 6px;
-    border: none;
-    background: rgba(0, 0, 0, 0.25);
-    color: #f0e6c8;                  /* khaki-white text */
-    font-size: 13px;
-    outline: none;
-    transition: all 0.2s ease;
-  }
-  
-  /* Shorter year input */
-  #year {
-    min-width: 90px;
-  }
-  
-  /* Focus effects (extend width & slightly darker) */
-  .controls input:focus,
-  .controls select:focus {
-    min-width: 200px;
-    background: rgba(0, 0, 0, 0.45); /* slightly darker */
-  }
-  
-  /* Dropdown arrow spacing */
-  .controls select {
-    padding-right: 28px;
-  }
-  
-  /* Dropdown options styling */
-  .controls select option {
-    background: rgba(0, 0, 0, 0.35);
-    color: #f0e6c8;
-    border-radius: 6px;
-  }
-  
-  /* Button */
-  .controls button {
-    min-width: 130px;
-    height: 30px;
-    padding: 4px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    background: rgba(245, 245, 245, 0.3); /* 30% transparent */
-    font-size: 13px;
-    color: #222;
-  }
-  
-  .controls button:hover {
-    background: rgba(245, 245, 245, 0.45);
-  }
-  
-  /* Suggestions box */
-  #suggestions {
-    position: absolute;
-    bottom: 38px;
-    left: 0;
-    background: rgba(0, 0, 0, 0.45); /* slightly darker */
-    border-radius: 6px;
-    overflow: hidden;
-    display: none;
-  }
-  
-  .suggestion {
-    padding: 6px 12px;
-    color: #f0e6c8;
-    cursor: pointer;
-  }
-  
-  .suggestion:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Oswald", sans-serif;
+    }
+    
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    #map {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+    }
+    
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      left: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 1000;
+    }
+    
+    .controls input,
+    .controls select {
+      min-width: 130px;
+      height: 30px;
+      padding: 4px 18px 4px 12px;
+      border-radius: 6px;
+      border: none;
+      background: rgba(0, 0, 0, 0.25);
+      color: #f0e6c8;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    
+    #year {
+      min-width: 90px;
+    }
+    
+    .controls input:focus,
+    .controls select:focus {
+      min-width: 200px;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    
+    .controls select {
+      padding-right: 28px;
+    }
+    
+    .controls select option {
+      background: rgba(0, 0, 0, 0.35);
+      color: #f0e6c8;
+      border-radius: 6px;
+    }
+    
+    .controls button {
+      min-width: 130px;
+      height: 30px;
+      padding: 4px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: rgba(245, 245, 245, 0.3);
+      font-size: 13px;
+      color: #222;
+    }
+    
+    .controls button:hover {
+      background: rgba(245, 245, 245, 0.45);
+    }
+    
+    #suggestions {
+      position: absolute;
+      bottom: 38px;
+      left: 0;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 6px;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .suggestion {
+      padding: 6px 12px;
+      color: #f0e6c8;
+      cursor: pointer;
+    }
+    
+    .suggestion:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 
 <body>
-
   <div id="map"></div>
 
   <div class="controls">
-    <input
-      id="entity"
-      type="text"
-      placeholder="Country"
-      autocomplete="off"
-    />
+    <input id="entity" type="text" placeholder="Country" autocomplete="off" />
     <div id="suggestions"></div>
 
     <select id="model">
@@ -143,15 +122,7 @@
       <option value="rf">Random Forest</option>
     </select>
 
-    <!-- Year is now a number input -->
-    <input
-      id="year"
-      type="number"
-      min="2000"
-      max="2040"
-      value="2035"
-      placeholder="Year"
-    />
+    <input id="year" type="number" min="2000" max="2040" value="2035" placeholder="Year"/>
 
     <button onclick="runPrediction()">Run Analysis</button>
   </div>
