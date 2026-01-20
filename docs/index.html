@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Sustaining POWER</title>
 
-  <!-- Oswald Font -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
   <!-- Leaflet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-  <!-- Charts -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <!-- Floating Control Panel -->
 <div class="control-panel">
-  <select id="entity"></select>
+  <input
+    id="entity"
+    list="countries"
+    placeholder="Country / Region"
+  />
+  <datalist id="countries"></datalist>
 
   <select id="model">
     <option value="linear">Linear Regression</option>
@@ -34,24 +36,13 @@
     <option value="rf">Random Forest</option>
   </select>
 
-  <select id="year">
-    <option>2025</option>
-    <option>2030</option>
-    <option>2035</option>
-    <option>2040</option>
-  </select>
+  <input id="year" type="number" value="2035"/>
 
   <button onclick="runPrediction()">Run Analysis</button>
 </div>
 
 <!-- Fullscreen Map -->
 <div id="map"></div>
-
-<!-- Charts (hidden until data loads) -->
-<div class="charts">
-  <canvas id="trendChart"></canvas>
-  <canvas id="energyMixChart"></canvas>
-</div>
 
 <script src="script.js"></script>
 </body>
