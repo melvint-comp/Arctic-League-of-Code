@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Sustaining POWER</title>
 
-  <!-- Google Font -->
+  <!-- Oswald Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -14,36 +14,44 @@
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Leaflet -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- Floating Control Panel -->
-<div class="control-panel">
-  <input
-    id="entity"
-    list="countries"
-    placeholder="Country / Region"
-  />
-  <datalist id="countries"></datalist>
+  <!-- Fullscreen Map -->
+  <div id="map"></div>
 
-  <select id="model">
-    <option value="linear">Linear Regression</option>
-    <option value="poly">Polynomial Regression</option>
-    <option value="rf">Random Forest</option>
-  </select>
+  <!-- Control Panel -->
+  <div class="controls">
+    <input
+      id="entity"
+      type="text"
+      placeholder="Country"
+      autocomplete="off"
+    />
+    <div id="suggestions"></div>
 
-  <input id="year" type="number" value="2035"/>
+    <select id="model">
+      <option value="linear">Linear Regression</option>
+      <option value="poly">Polynomial Regression</option>
+      <option value="rf">Random Forest</option>
+    </select>
 
-  <button onclick="runPrediction()">Run Analysis</button>
-</div>
+    <select id="year">
+      <option value="2025">2025</option>
+      <option value="2030">2030</option>
+      <option value="2035">2035</option>
+      <option value="2040">2040</option>
+    </select>
 
-<!-- Fullscreen Map -->
-<div id="map"></div>
+    <button onclick="runPrediction()">Run Analysis</button>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
