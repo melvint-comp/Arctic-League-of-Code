@@ -45,7 +45,7 @@
     z-index: 1000;
   }
   
-  /* Inputs (NOT button) */
+  /* Inputs (excluding button) */
   .controls input,
   .controls select {
     min-width: 130px;
@@ -53,8 +53,8 @@
     padding: 4px 18px 4px 12px;
     border-radius: 6px;
     border: none;
-    background: rgba(0, 0, 0, 0.2); /* dark translucent */
-    color: #f0e6c8;                /* khaki-white */
+    background: rgba(0, 0, 0, 0.35); /* darkened ~15% */
+    color: #f0e6c8;                  /* khaki-white text */
     font-size: 13px;
     outline: none;
     transition: all 0.2s ease;
@@ -65,28 +65,26 @@
     min-width: 90px;
   }
   
-  /* Extend width only on focus */
+  /* Focus effects (extend width & slightly darker) */
   .controls input:focus,
   .controls select:focus {
     min-width: 200px;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.45); /* slightly darker */
   }
   
   /* Dropdown arrow spacing */
   .controls select {
     padding-right: 28px;
-    background: rgba(0, 0, 0, 0.35); /* slightly darker than inputs */
-    color: #f0e6c8;
   }
   
-  /* Dropdown options inherit color scheme */
+  /* Dropdown options styling */
   .controls select option {
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
     color: #f0e6c8;
     border-radius: 6px;
   }
   
-  /* Run Analysis Button */
+  /* Button */
   .controls button {
     min-width: 130px;
     height: 30px;
@@ -94,14 +92,13 @@
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    background: rgba(245, 245, 245, 0.7); /* 30% transparent */
+    background: rgba(245, 245, 245, 0.3); /* 30% transparent */
     font-size: 13px;
-    color: #000;
-    transition: all 0.2s ease;
+    color: #222;
   }
   
   .controls button:hover {
-    background: rgba(225, 225, 225, 0.85);
+    background: rgba(245, 245, 245, 0.45);
   }
   
   /* Suggestions box */
@@ -109,7 +106,7 @@
     position: absolute;
     bottom: 38px;
     left: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.45); /* slightly darker */
     border-radius: 6px;
     overflow: hidden;
     display: none;
@@ -124,7 +121,6 @@
   .suggestion:hover {
     background: rgba(255, 255, 255, 0.1);
   }
-
   </style>
 </head>
 
