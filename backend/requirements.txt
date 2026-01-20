@@ -1,0 +1,6 @@
+flask
+polars
+numpy
+scipy
+scikit-learn
+matplotlib
