@@ -1,9 +1,11 @@
 # Sustaining POWER
 *Predictive Observatory for World Energy and Renewables*
 
-    ⚡ Data-Driven Sustainability Intelligence
+    ⚡ Data-Driven Energy Sustainability Intelligence
     Projected Hackathon: Arctic League of Code (Devpost)
     Author: Melvin T (https://devpost.com/melvin-t)
+
+*Climate Action and Sustainability + Artificial Intelligence and Machine Learning + Data Analytics and Visualization*
 
 ---
 
