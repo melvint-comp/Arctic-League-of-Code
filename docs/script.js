@@ -1,44 +1,57 @@
-/* -----------------------
-   MAP INITIALIZATION
------------------------- */
-
+/* ---------------- Map ---------------- */
 const map = L.map("map", {
   zoomControl: false
-}).setView([15, 0], 2);
+}).setView([10, 0], 2);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19
-}).addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-/* -----------------------
-   AUTOCOMPLETE DATA
------------------------- */
+let marker;
 
-// Example list — replace or expand as needed
-const countryList = [
-  "Malaysia", "Singapore", "Indonesia", "Thailand",
-  "Vietnam", "China", "India", "Japan",
-  "United States", "Canada", "Brazil",
-  "Germany", "France", "United Kingdom",
-  "South Africa", "Nigeria", "Kenya", "Australia"
+/* ---------------- Country Suggestions ---------------- */
+const countries = [
+  "Malaysia", "Singapore", "Indonesia", "Thailand", "Philippines",
+  "Vietnam", "India", "China", "Japan", "South Korea",
+  "United States", "Canada", "Brazil", "Germany", "France",
+  "United Kingdom", "Australia"
 ];
 
-// Populate datalist
-const datalist = document.getElementById("countries");
-countryList.forEach(c => {
-  const option = document.createElement("option");
-  option.value = c;
-  datalist.appendChild(option);
+const input = document.getElementById("entity");
+const suggestionsBox = document.getElementById("suggestions");
+
+input.addEventListener("input", () => {
+  const value = input.value;
+  suggestionsBox.innerHTML = "";
+
+  if (!value) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+
+  const matches = countries.filter(c =>
+    c.startsWith(value)
+  );
+
+  matches.forEach(country => {
+    const div = document.createElement("div");
+    div.className = "suggestion";
+    div.innerText = country;
+    div.onclick = () => {
+      input.value = country;
+      suggestionsBox.style.display = "none";
+    };
+    suggestionsBox.appendChild(div);
+  });
+
+  suggestionsBox.style.display = matches.length ? "block" : "none";
 });
 
-/* -----------------------
-   ANALYSIS CALL
------------------------- */
-
+/* ---------------- Prediction ---------------- */
 async function runPrediction() {
-  const entity = document.getElementById("entity").value;
+  const entity = input.value;
   const model = document.getElementById("model").value;
   const year = document.getElementById("year").value;
+
+  if (!entity) return;
 
   const res = await fetch("http://localhost:5000/analyze", {
     method: "POST",
@@ -48,18 +61,11 @@ async function runPrediction() {
 
   const data = await res.json();
 
-  showMarker(data.location);
-}
-
-/* -----------------------
-   MAP MARKER
------------------------- */
-
-function showMarker(loc) {
-  map.setView([loc.lat, loc.lon], 4);
-
-  L.marker([loc.lat, loc.lon])
+  if (marker) marker.remove();
+  marker = L.marker([data.location.lat, data.location.lon])
     .addTo(map)
-    .bindPopup(`<strong>${loc.entity}</strong><br/>Energy Analysis Loaded`)
+    .bindPopup(entity)
     .openPopup();
+
+  map.setView([data.location.lat, data.location.lon], 4);
 }
