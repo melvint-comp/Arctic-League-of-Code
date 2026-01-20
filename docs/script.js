@@ -1,4 +1,3 @@
-/* ---------------- Map ---------------- */
 const map = L.map("map", {
   zoomControl: false
 }).setView([10, 0], 2);
@@ -7,7 +6,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
 let marker;
 
-/* ---------------- Country Suggestions ---------------- */
 const countries = [
   "Malaysia", "Singapore", "Indonesia", "Thailand", "Philippines",
   "Vietnam", "India", "China", "Japan", "South Korea",
