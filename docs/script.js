@@ -19,7 +19,7 @@ const input = document.getElementById("entity");
 const suggestionsBox = document.getElementById("suggestions");
 
 input.addEventListener("input", () => {
-  const value = input.value;
+  const value = input.value.toLowerCase();
   suggestionsBox.innerHTML = "";
 
   if (!value) {
@@ -28,7 +28,7 @@ input.addEventListener("input", () => {
   }
 
   const matches = countries.filter(c =>
-    c.startsWith(value)
+    c.toLowerCase().startsWith(value)
   );
 
   matches.forEach(country => {
