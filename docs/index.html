@@ -45,7 +45,7 @@
     z-index: 1000;
   }
   
-  /* Inputs (entity + year + model) */
+  /* Inputs (NOT button) */
   .controls input,
   .controls select {
     min-width: 130px;
@@ -60,7 +60,7 @@
     transition: all 0.2s ease;
   }
   
-  /* Year input narrower */
+  /* Shorter year input */
   #year {
     min-width: 90px;
   }
@@ -69,21 +69,24 @@
   .controls input:focus,
   .controls select:focus {
     min-width: 200px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.35);
   }
   
   /* Dropdown arrow spacing */
   .controls select {
     padding-right: 28px;
-  }
-  
-  /* Model selection dropdown same style as inputs */
-  #model {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.35); /* slightly darker than inputs */
     color: #f0e6c8;
   }
   
-  /* Button */
+  /* Dropdown options inherit color scheme */
+  .controls select option {
+    background: rgba(0,0,0,0.35);
+    color: #f0e6c8;
+    border-radius: 6px;
+  }
+  
+  /* Run Analysis Button */
   .controls button {
     min-width: 130px;
     height: 30px;
@@ -91,12 +94,14 @@
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    background: rgba(245, 245, 245, 0.35); /* more transparent 35% */
+    background: rgba(245, 245, 245, 0.7); /* 30% transparent */
     font-size: 13px;
+    color: #000;
+    transition: all 0.2s ease;
   }
   
   .controls button:hover {
-    background: rgba(245, 245, 245, 0.4); /* slightly more opaque on hover */
+    background: rgba(225, 225, 225, 0.85);
   }
   
   /* Suggestions box */
@@ -119,6 +124,7 @@
   .suggestion:hover {
     background: rgba(255, 255, 255, 0.1);
   }
+
   </style>
 </head>
 
