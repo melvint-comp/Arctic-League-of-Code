@@ -10,14 +10,12 @@ html, body {
   overflow: hidden;
 }
 
-/* Fullscreen map */
 #map {
   position: fixed;
   inset: 0;
   z-index: 1;
 }
 
-/* Controls container */
 .controls {
   position: fixed;
   bottom: 20px;
@@ -27,49 +25,61 @@ html, body {
   z-index: 1000;
 }
 
-/* Inputs & buttons */
 .controls input,
-.controls select,
-.controls button {
+.controls select {
   min-width: 130px;
-  height: 32px;                 /* flatter */
-  padding: 4px 16px 4px 12px;   /* extra right padding */
-  border-radius: 6px;           /* slight rounding only */
-  border: 2px solid #444;
-  background: rgba(255, 255, 255, 0.8); /* 20% transparent */
+  height: 30px;
+  padding: 4px 18px 4px 12px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(0, 0, 0, 0.25);
+  color: #f0e6c8;
   font-size: 13px;
   outline: none;
   transition: all 0.2s ease;
 }
 
-/* Dropdown arrow spacing */
-.controls select {
-  padding-right: 26px;
+#year {
+  min-width: 90px;
 }
 
-/* Extend width only on focus */
 .controls input:focus,
 .controls select:focus {
   min-width: 200px;
+  background: rgba(0, 0, 0, 0.45);
 }
 
-/* Button */
+.controls select {
+  padding-right: 28px;
+}
+
+.controls select option {
+  background: rgba(0, 0, 0, 0.35);
+  color: #f0e6c8;
+  border-radius: 6px;
+}
+
 .controls button {
+  min-width: 130px;
+  height: 30px;
+  padding: 4px 14px;
+  border-radius: 6px;
+  border: none;
   cursor: pointer;
-  background: rgba(245, 245, 245, 0.8);
+  background: rgba(245, 245, 245, 0.3);
+  font-size: 13px;
+  color: #222;
 }
 
 .controls button:hover {
-  background: rgba(225, 225, 225, 0.9);
+  background: rgba(245, 245, 245, 0.45);
 }
 
-/* Suggestions box */
 #suggestions {
   position: absolute;
-  bottom: 40px;
+  bottom: 38px;
   left: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid #444;
+  background: rgba(0, 0, 0, 0.45);
   border-radius: 6px;
   overflow: hidden;
   display: none;
@@ -77,9 +87,10 @@ html, body {
 
 .suggestion {
   padding: 6px 12px;
+  color: #f0e6c8;
   cursor: pointer;
 }
 
 .suggestion:hover {
-  background: #eaeaea;
+  background: rgba(255, 255, 255, 0.1);
 }
