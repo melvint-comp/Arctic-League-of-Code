@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f9f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #2e7d32;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.controls {
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  padding: 10px;
+  background: #43a047;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #388e3c;
+}
+
+.results {
+  max-width: 700px;
+  margin: auto;
+}
