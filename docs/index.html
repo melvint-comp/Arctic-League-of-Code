@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Sustaining POWER</title>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Oswald Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
 
+  <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<header>
-  <h1>🌍 Sustaining POWER</h1>
-  <p>Predictive Observatory for World Energy & Renewables (SDG 7)</p>
-</header>
 
-<section class="controls">
-  <input id="entity" placeholder="Country (e.g. Malaysia)">
+<!-- Floating Control Panel -->
+<div class="control-panel">
+  <select id="entity"></select>
+
   <select id="model">
     <option value="linear">Linear Regression</option>
     <option value="poly">Polynomial Regression</option>
     <option value="rf">Random Forest</option>
   </select>
-  <input id="year" type="number" value="2035">
-  <button onclick="runPrediction()">Run Analysis</button>
-</section>
 
-<section class="dashboard">
+  <select id="year">
+    <option>2025</option>
+    <option>2030</option>
+    <option>2035</option>
+    <option>2040</option>
+  </select>
+
+  <button onclick="runPrediction()">Run Analysis</button>
+</div>
+
+<!-- Fullscreen Map -->
+<div id="map"></div>
+
+<!-- Charts (hidden until data loads) -->
+<div class="charts">
   <canvas id="trendChart"></canvas>
   <canvas id="energyMixChart"></canvas>
-</section>
-
-<section id="map"></section>
-
-<p id="insight"></p>
+</div>
 
 <script src="script.js"></script>
 </body>
