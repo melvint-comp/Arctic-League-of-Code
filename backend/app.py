@@ -1,19 +1,19 @@
 from flask import Flask, request, jsonify
-from model import predict_energy
+from analytics import analyze
 
 app = Flask(__name__)
 
-@app.route("/predict", methods=["POST"])
-def predict():
+@app.route("/analyze", methods=["POST"])
+def run():
     data = request.json
-    entity = data["entity"]
-    year = int(data["year"])
+    result = analyze(data["entity"], data["model"], int(data["year"]))
 
-    years, values = predict_energy(entity, year)
-    return jsonify({
-        "years": years,
-        "values": values
-    })
+    result["insight"] = (
+        f"Projected energy demand rises steadily, indicating "
+        f"the need for accelerated renewable investment to meet SDG 7 targets."
+    )
+
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(debug=True)
