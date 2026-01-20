@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SDG 7 Energy Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌍 SDG 7 Energy Consumption Predictor</h1>
+    <p>Predict future energy usage to support sustainable energy planning</p>
+  </header>
+
+  <section class="controls">
+    <label>Country / Region</label>
+    <input type="text" id="entity" placeholder="e.g. Malaysia" />
+
+    <label>Predict up to year</label>
+    <input type="number" id="year" value="2030" />
+
+    <button onclick="predict()">Predict Energy Consumption</button>
+  </section>
+
+  <section class="results">
+    <canvas id="chart"></canvas>
+    <p id="insight"></p>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
