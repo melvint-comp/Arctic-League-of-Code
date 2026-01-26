@@ -3,7 +3,7 @@
 
     ⚡ Data-Driven Energy Sustainability Intelligence
     Projected Hackathon: Arctic League of Code (Devpost)
-    Author: Melvin T (https://devpost.com/melvin-t)
+    Author: Melvin Tai (https://devpost.com/melvin-t)
 
 *Climate Action and Sustainability + Artificial Intelligence and Machine Learning + Data Analytics and Visualization*
 
